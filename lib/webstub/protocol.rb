@@ -132,6 +132,8 @@ module WebStub
       case content_type
       when /application\/x-www-form-urlencoded/
         URI.decode_www_form(body)
+      when /multipart\/form-data/
+        Form.decode_multipart_form(content_type, body)
       else
         body
       end
